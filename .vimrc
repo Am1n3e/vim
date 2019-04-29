@@ -71,5 +71,9 @@ map <C-n> :NERDTreeToggle<CR>
 
 set rnu " Set relative line number
 
+:nmap <space> :
+:imap <C-j> <Down>
+:imap <C-k> <Up>
+
 let python_highlight_all=1
 syntax on
