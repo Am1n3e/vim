@@ -16,9 +16,10 @@ Bundle 'Valloric/YouCompleteMe'
 Plugin 'nvie/vim-flake8'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'kien/ctrlp.vim'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plugin 'junegunn/fzf.vim'
+Plugin 'tpope/vim-fugitive'
 " add all your plugins here (note older versions of Vundle
 " used Bundle instead of Plugin)
 
@@ -70,10 +71,15 @@ let NERDTreeIgnore=['\.pyc$', '\~$']
 map <C-n> :NERDTreeToggle<CR>
 
 set rnu " Set relative line number
+set noswapfile
 
 :nmap <space> :
 :imap <C-j> <Down>
 :imap <C-k> <Up>
+
+set laststatus=2
+
+set guifont=Source\ Code\ Pro\ for\ Powerline:h13 
 
 let python_highlight_all=1
 syntax on
