@@ -10,7 +10,7 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-Plugin 'tmhedberg/SimpylFold'
+"Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 Bundle 'Valloric/YouCompleteMe'
 Plugin 'nvie/vim-flake8'
@@ -20,6 +20,8 @@ Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
 Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'singularityware/singularity.lang', {'rtp': 'vim/'}
 " add all your plugins here (note older versions of Vundle
 " used Bundle instead of Plugin)
 
@@ -62,13 +64,38 @@ map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " Flake8
 autocmd BufWritePost *.py call flake8#Flake8()
 let g:flake8_show_in_gutter=1
-let g:flake8_show_in_file=1
+let g:flake8_show_in_file=0
 
 " Nerd tree
-autocmd vimenter * NERDTree  " Always open
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif " Close vim if only nerdtree is open
 let NERDTreeIgnore=['\.pyc$', '\~$']
 map <C-n> :NERDTreeToggle<CR>
+
+" Fzf 
+map <C-p> :GFiles<CR>
+
+" Nerd commenter
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+" Enable NERDCommenterToggle to check all selected lines is commented or not 
+let g:NERDToggleCheckAllLines = 1
+
+map - <Leader>c<Space>
 
 set rnu " Set relative line number
 set noswapfile
@@ -81,5 +108,9 @@ set laststatus=2
 
 set guifont=Source\ Code\ Pro\ for\ Powerline:h13 
 
+let g:ycm_python_binary_path = 'python' 
+
 let python_highlight_all=1
 syntax on
+
+
