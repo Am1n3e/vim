@@ -22,6 +22,10 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'singularityware/singularity.lang', {'rtp': 'vim/'}
+Plugin 'martinda/Jenkinsfile-vim-syntax'
+Plugin 'xolox/vim-notes'
+Plugin 'xolox/vim-misc'
+Plugin 'takac/vim-hardtime'
 " add all your plugins here (note older versions of Vundle
 " used Bundle instead of Plugin)
 
@@ -104,6 +108,8 @@ set noswapfile
 :imap <C-j> <Down>
 :imap <C-k> <Up>
 
+com! Fjson %!python3 -m json.tool
+
 set laststatus=2
 
 set guifont=Source\ Code\ Pro\ for\ Powerline:h13 
@@ -111,6 +117,18 @@ set guifont=Source\ Code\ Pro\ for\ Powerline:h13
 let g:ycm_python_binary_path = 'python' 
 
 let python_highlight_all=1
+
+" let g:hardtime_default_on = 1
+let g:hardtime_ignore_quickfix = 1
+
+autocmd Filetype Jenkinsfile setlocal tabstop=4 shiftwidth=4 expandtab
+autocmd Filetype yaml setlocal tabstop=2 shiftwidth=2 expandtab
+
+if &diff
+	highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+	highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+	highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+	highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
+endif 
+
 syntax on
-
-
